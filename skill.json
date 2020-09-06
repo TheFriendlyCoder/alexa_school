@@ -2,31 +2,71 @@
   "manifest": {
     "publishingInformation": {
       "locales": {
-        "en-US": {
-          "name": "shallow-dump",
+        "en-CA": {
           "summary": "Sample Short Description",
-          "description": "Sample Full Description",
           "examplePhrases": [
             "Alexa open hello world",
             "hello",
             "help"
           ],
-          "keywords": []
+          "keywords": [
+            "district",
+            "francophone",
+            "school",
+            "district",
+            "closures",
+            "late",
+            "buses"
+          ],
+          "name": "my school",
+          "description": "Sample Full Description",
+          "smallIconUri": "file://assets/images/en-CA_smallIconUri.png",
+          "largeIconUri": "file://assets/images/en-CA_largeIconUri.png"
+        },
+        "fr-CA": {
+          "name": "my school"
         }
       },
       "isAvailableWorldwide": true,
-      "testingInstructions": "Sample Testing Instructions.",
-      "category": "KNOWLEDGE_AND_TRIVIA",
+      "testingInstructions": "nothing special required",
+      "category": "EVENT_FINDERS",
       "distributionCountries": []
     },
     "apis": {
       "custom": {
         "endpoint": {
-          "sourceDir": "lambda/py/lambda_upload",
-          "uri": "ask-custom-shallow-dump-default"
+          "uri": "arn:aws:lambda:us-east-1:998300611082:function:c9a6a01d-e5cb-4345-9798-e6d956b43a29:Release_0"
+        },
+        "interfaces": [],
+        "regions": {
+          "EU": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:eu-west-1:998300611082:function:c9a6a01d-e5cb-4345-9798-e6d956b43a29:Release_0"
+            }
+          },
+          "NA": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-east-1:998300611082:function:c9a6a01d-e5cb-4345-9798-e6d956b43a29:Release_0"
+            }
+          },
+          "FE": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-west-2:998300611082:function:c9a6a01d-e5cb-4345-9798-e6d956b43a29:Release_0"
+            }
+          }
         }
       }
     },
-    "manifestVersion": "1.0"
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "locales": {
+        "en-CA": {}
+      },
+      "containsAds": false,
+      "isExportCompliant": true,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
+    }
   }
 }

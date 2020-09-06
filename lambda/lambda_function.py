@@ -41,7 +41,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         district_name = "FREDERICTON"
         school_name = "École des Bâtisseurs"
         text = requests.get(SCHEDULE_URL).text
-        # obj = ScheduleParser(text)
+        obj = ScheduleParser(text)
         # d = obj.get_district(district_name)
         # s = d.get_school(school_name)
         # if s.is_open:
@@ -186,7 +186,6 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
 
 
 sb = CustomSkillBuilder(persistence_adapter=s3_adapter)
-#sb = SkillBuilder()
 
 sb.add_request_handler(LaunchRequestHandler())
 sb.add_request_handler(CaptureDistrictIntentHandler())
