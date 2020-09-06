@@ -7,6 +7,7 @@ see if I can connect app to our devices before publishing
 
 soon:
 add support for french language
+    - https://developer.amazon.com/en-US/docs/alexa/custom-skills/develop-skills-in-multiple-languages.html
 make git repo into a package and publish the parser library to pypi
 add unit tests to library
 add nightly trigger to validate live content from websites to make sure parser isn't broken
@@ -15,6 +16,8 @@ medium term:
 add docs to library explaining how to set up skill
 add user docs to library
 export package data from alexa developer console to repo
+    - https://dev.to/ajot/how-to-speed-alexa-skill-development-using-ask-command-line-interface-and-custom-templates-16g1
+    - https://developer.amazon.com/en-US/docs/alexa/hosted-skills/alexa-hosted-skills-git-import.html
 look at incorporating alexa cli into build to generate package and auto-publish
 
 long term:
