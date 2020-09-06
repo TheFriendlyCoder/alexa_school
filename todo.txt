@@ -1,0 +1,23 @@
+now:
+create 1 or 2 basic intents
+finish fixing validation problems on package
+submit for first review
+figure out how version management works so I know how to roll updates
+see if I can connect app to our devices before publishing
+
+soon:
+add support for french language
+make git repo into a package and publish the parser library to pypi
+add unit tests to library
+add nightly trigger to validate live content from websites to make sure parser isn't broken
+
+medium term:
+add docs to library explaining how to set up skill
+add user docs to library
+export package data from alexa developer console to repo
+look at incorporating alexa cli into build to generate package and auto-publish
+
+long term:
+detect users' location based on their postal code and guess which district they are in
+add support for english schools as well
+expand to make the app support different school districts and locales (ie: extensible)

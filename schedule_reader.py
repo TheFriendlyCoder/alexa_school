@@ -221,3 +221,4 @@ if __name__ == "__main__":  # pragma: no cover
     text = requests.get(SCHEDULE_URL).text
     print(ScheduleParser.validate(text))
     obj = ScheduleParser(text)
+    print(obj)
