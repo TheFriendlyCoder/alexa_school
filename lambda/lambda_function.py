@@ -38,9 +38,9 @@ class LaunchRequestHandler(AbstractRequestHandler):
         # speak_output = "Welcome to the local schools app. What school district are you in?"
         # repeat_question = "I'm sorry. I didn't catch that. What school district did you say you were in?"
 
-        # district_name = "FREDERICTON"
-        # school_name = "École des Bâtisseurs"
-        # text = requests.get(SCHEDULE_URL).text
+        district_name = "FREDERICTON"
+        school_name = "École des Bâtisseurs"
+        text = requests.get(SCHEDULE_URL).text
         # obj = ScheduleParser(text)
         # d = obj.get_district(district_name)
         # s = d.get_school(school_name)
