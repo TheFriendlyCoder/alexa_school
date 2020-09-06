@@ -3,4 +3,5 @@ ask-sdk-core==1.11.0
 requests
 pandas
 lxml
+tabulate
 ask-sdk-s3-persistence-adapter

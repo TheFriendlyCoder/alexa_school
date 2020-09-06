@@ -1,5 +1,4 @@
 # runtime
 -rlambda/requirements.txt
 
-# development
-tabulate
+# development package should go below
