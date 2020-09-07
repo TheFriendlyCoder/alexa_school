@@ -56,6 +56,16 @@
           "samples": [
             "Set my school district"
           ]
+        },
+        {
+          "name": "SchoolsOpenIntent",
+          "slots": [],
+          "samples": [
+            "is my school closed today",
+            "is school closed today",
+            "is my school open today",
+            "Are schools open today"
+          ]
         }
       ],
       "types": []
@@ -93,5 +103,5 @@
       }
     ]
   },
-  "version": "8"
+  "version": "9"
 }

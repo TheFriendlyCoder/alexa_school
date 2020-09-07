@@ -9,6 +9,7 @@ import ask_sdk_core.utils as ask_utils
 
 import os
 from ask_sdk_s3.adapter import S3Adapter
+
 s3_adapter = S3Adapter(bucket_name=os.environ["S3_PERSISTENCE_BUCKET"])
 
 from ask_sdk_core.skill_builder import CustomSkillBuilder
@@ -34,7 +35,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        #logging.info("Kevin Was Here")
+        # logging.info("Kevin Was Here")
 
         attr = handler_input.attributes_manager.persistent_attributes
         if "district" in attr:
@@ -51,7 +52,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         #     speak_output = f"School {s.name} is open"
         # else:
         #     speak_output = f"School {s.name} is closed"
-        #speak_output = "I hear you Kevin"
+        # speak_output = "I hear you Kevin"
 
         return (
             handler_input.response_builder
@@ -63,6 +64,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
 class CaptureDistrictIntentHandler(AbstractRequestHandler):
     """Handler for getting the school district."""
+
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
         return ask_utils.is_intent_name("CaptureDistrictIntent")(handler_input)
@@ -72,6 +74,9 @@ class CaptureDistrictIntentHandler(AbstractRequestHandler):
         slots = handler_input.request_envelope.request.intent.slots
         in_district = slots["district"].value
 
+        # TODO: when loading URL data, cache it in the app and put a timeout on the requests call
+        #       if the request times out, fall back to the cached copy
+        # TODO: put an expriation on the cached data, and warn the user the data may be out of date
         src_data = ScheduleParser(requests.get(SCHEDULE_URL).text)
         district = None
         for cur_dist in src_data.districts:
@@ -87,7 +92,6 @@ class CaptureDistrictIntentHandler(AbstractRequestHandler):
                 speak_output += "school in it."
             else:
                 speak_output += "schools in it."
-            #speak_output = f"Thanks. I see you are in district {district.name}."
 
             attributes_manager = handler_input.attributes_manager
             attributes_manager.persistent_attributes = {"district": district.name}
@@ -97,6 +101,48 @@ class CaptureDistrictIntentHandler(AbstractRequestHandler):
             handler_input.response_builder
                 .speak(speak_output)
                 # .ask("add a reprompt if you want to keep the session open for the user to respond")
+                .response
+        )
+
+
+class SchoolsOpenIntentHandler(AbstractRequestHandler):
+    """Handler for checking school closures."""
+
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return ask_utils.is_intent_name("SchoolsOpenIntent")(handler_input)
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        slots = handler_input.request_envelope.request.intent.slots
+        # TODO: prompt the user for district if it isn't set
+        in_district = slots["district"].value
+
+        src_data = ScheduleParser(requests.get(SCHEDULE_URL).text)
+        district = src_data.get_district(in_district)
+
+        if not district:
+            speak_output = f"I'm sorry but district {in_district} not found in school database."
+        else:
+            open_schools = list()
+            closed_schools = list()
+
+            for cur_school in district.schools:
+                if cur_school.is_open:
+                    open_schools.append(cur_school.name)
+                else:
+                    closed_schools.append(cur_school.name)
+
+            if closed_schools and not open_schools:
+                speak_output = "All schools in the district are closed"
+            elif open_schools and not closed_schools:
+                speak_output = "All schools in the district are open"
+            else:
+                speak_output = ",".join(closed_schools) + " are closed"
+
+        return (
+            handler_input.response_builder
+                .speak(speak_output)
                 .response
         )
 
@@ -211,6 +257,7 @@ sb = CustomSkillBuilder(persistence_adapter=s3_adapter)
 
 sb.add_request_handler(LaunchRequestHandler())
 sb.add_request_handler(CaptureDistrictIntentHandler())
+sb.add_request_handler(SchoolsOpenIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())

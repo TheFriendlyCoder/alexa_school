@@ -6,6 +6,9 @@ figure out how version management works so I know how to roll updates
 see if I can connect app to our devices before publishing
 
 soon:
+add intent for late buses
+add intent for school status and include closures and late buses
+
 add support for french language
     - https://developer.amazon.com/en-US/docs/alexa/custom-skills/develop-skills-in-multiple-languages.html
 make git repo into a package and publish the parser library to pypi
