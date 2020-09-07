@@ -34,26 +34,26 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        logging.info("Kevin Was Here")
-        # speak_output = "Welcome to the local schools app. What school district are you in?"
-        # repeat_question = "I'm sorry. I didn't catch that. What school district did you say you were in?"
+        #logging.info("Kevin Was Here")
+        speak_output = "Welcome to the local schools app. What school district are you in?"
+        repeat_question = "I'm sorry. I didn't catch that. What school district did you say you were in?"
 
-        district_name = "FREDERICTON"
-        school_name = "École des Bâtisseurs"
-        text = requests.get(SCHEDULE_URL).text
-        obj = ScheduleParser(text)
+        # district_name = "FREDERICTON"
+        # school_name = "École des Bâtisseurs"
+        # text = requests.get(SCHEDULE_URL).text
+        # obj = ScheduleParser(text)
         # d = obj.get_district(district_name)
         # s = d.get_school(school_name)
         # if s.is_open:
         #     speak_output = f"School {s.name} is open"
         # else:
         #     speak_output = f"School {s.name} is closed"
-        speak_output = "I hear you Kevin"
+        #speak_output = "I hear you Kevin"
 
         return (
             handler_input.response_builder
                 .speak(speak_output)
-                # .ask(repeat_question)
+                .ask(repeat_question)
                 .response
         )
 
@@ -66,10 +66,9 @@ class CaptureDistrictIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        #slots = handler_input.request_envelope.request.intent.slots
-        #district = slots["district"]
-        district = "Lovely"
-        speak_output = "Thanks. I see you are in district {district}."
+        slots = handler_input.request_envelope.request.intent.slots
+        district = slots["district"]["value"]
+        speak_output = f"Thanks. I see you are in district {district}."
 
         return (
             handler_input.response_builder

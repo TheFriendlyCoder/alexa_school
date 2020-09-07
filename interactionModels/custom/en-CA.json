@@ -31,10 +31,67 @@
         {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
+        },
+        {
+          "name": "CaptureDistrictIntent",
+          "slots": [
+            {
+              "name": "district",
+              "type": "AMAZON.City",
+              "samples": [
+                "I am in school district {district}",
+                "My school district is {district}",
+                "{district} district",
+                "We are in district {district}",
+                "My district is {district}",
+                "Our district is {district}",
+                "Our district is the {district} area",
+                "{district}",
+                "{district} area",
+                "city of {district}",
+                "I am in district {district}"
+              ]
+            }
+          ],
+          "samples": [
+            "Set my school district"
+          ]
         }
       ],
       "types": []
-    }
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "CaptureDistrictIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "district",
+              "type": "AMAZON.City",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.965027403330.946240534402"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.965027403330.946240534402",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What school district are you in?"
+          }
+        ]
+      }
+    ]
   },
-  "version": "7"
+  "version": "8"
 }
