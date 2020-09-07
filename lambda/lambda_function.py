@@ -114,9 +114,9 @@ class SchoolsOpenIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        slots = handler_input.request_envelope.request.intent.slots
+        attr = handler_input.attributes_manager.persistent_attributes
+        in_district = attr["district"]
         # TODO: prompt the user for district if it isn't set
-        in_district = slots["district"].value
 
         src_data = ScheduleParser(requests.get(SCHEDULE_URL).text)
         district = src_data.get_district(in_district)
