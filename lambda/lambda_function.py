@@ -35,9 +35,12 @@ class LaunchRequestHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         #logging.info("Kevin Was Here")
-        speak_output = "Welcome to the local schools app. What school district are you in?"
-        repeat_question = "I'm sorry. I didn't catch that. What school district did you say you were in?"
 
+        attr = handler_input.attributes_manager.persistent_attributes
+        if "district" in attr:
+            speak_output = f"I see you are from school district {attr['district']}"
+        else:
+            speak_output = "Welcome to the local schools app. How can I help you today?"
         # district_name = "FREDERICTON"
         # school_name = "École des Bâtisseurs"
         # text = requests.get(SCHEDULE_URL).text
@@ -53,7 +56,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         return (
             handler_input.response_builder
                 .speak(speak_output)
-                .ask(repeat_question)
+                .ask(speak_output)
                 .response
         )
 
@@ -67,8 +70,28 @@ class CaptureDistrictIntentHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         slots = handler_input.request_envelope.request.intent.slots
-        district = slots["district"]["value"]
-        speak_output = f"Thanks. I see you are in district {district}."
+        in_district = slots["district"].value
+
+        src_data = ScheduleParser(requests.get(SCHEDULE_URL).text)
+        district = None
+        for cur_dist in src_data.districts:
+            if cur_dist.name.lower() == in_district.lower():
+                district = cur_dist
+                break
+
+        if not district:
+            speak_output = f"I'm sorry but district {in_district} is not currently supported."
+        else:
+            speak_output = f"Thanks. I see you are in district {district.name} which has {len(district.schools)} "
+            if len(district.schools) == 1:
+                speak_output += "school in it."
+            else:
+                speak_output += "schools in it."
+            #speak_output = f"Thanks. I see you are in district {district.name}."
+
+            attributes_manager = handler_input.attributes_manager
+            attributes_manager.persistent_attributes = {"district": district.name}
+            attributes_manager.save_persistent_attributes()
 
         return (
             handler_input.response_builder
