@@ -133,3 +133,6 @@ dmypy.json
 htmlcov
 htmldocs
 docs/api
+
+# alexa ask folders
+.ask
