@@ -32,7 +32,7 @@
     "apis": {
       "custom": {
         "endpoint": {
-          "uri": "arn:aws:lambda:us-east-1:265901712594:function:ask-myschool-default-default-1599940017240"
+          "uri": "arn:aws:lambda:us-east-1:265901712594:function:ask-localschool-default-skillSt-AlexaSkillFunction-86HAWFHEI5KG"
         },
         "interfaces": [],
         "regions": {

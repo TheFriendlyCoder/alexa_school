@@ -130,9 +130,9 @@ dmypy.json
 .vscode
 
 # Build Folders
-htmlcov
-htmldocs
-docs/api
+htmlcov/
+htmldocs/
+docs/api/
 
 # alexa ask folders
-.ask
+.ask/
