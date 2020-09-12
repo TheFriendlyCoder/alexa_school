@@ -3,9 +3,9 @@
     "publishingInformation": {
       "locales": {
         "en-CA": {
-          "summary": "Sample Short Description",
+          "summary": "Reports on school closures and late buses for regional school districts",
           "examplePhrases": [
-            "Alexa open hello world",
+            "Alexa open local school",
             "hello",
             "help"
           ],
@@ -18,13 +18,10 @@
             "late",
             "buses"
           ],
-          "name": "my school",
-          "description": "Sample Full Description",
+          "name": "local school",
+          "description": "Reports on school closures and late buses for regional school districts",
           "smallIconUri": "file://assets/images/en-CA_smallIconUri.png",
           "largeIconUri": "file://assets/images/en-CA_largeIconUri.png"
-        },
-        "fr-CA": {
-          "name": "my school"
         }
       },
       "isAvailableWorldwide": true,
@@ -35,7 +32,7 @@
     "apis": {
       "custom": {
         "endpoint": {
-          "uri": "arn:aws:lambda:us-east-1:998300611082:function:c9a6a01d-e5cb-4345-9798-e6d956b43a29:Release_0"
+          "uri": "arn:aws:lambda:us-east-1:265901712594:function:ask-myschool-default-default-1599940017240"
         },
         "interfaces": [],
         "regions": {

@@ -18,7 +18,7 @@ from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from ask_sdk_core.handler_input import HandlerInput
 
 from ask_sdk_model import Response
-from schedule_parser import ScheduleParser, SCHEDULE_URL
+from school_scraper.fsdscraper import FSDScraper
 import requests
 
 logger = logging.getLogger(__name__)
@@ -42,6 +42,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
             speak_output = f"I see you are from school district {attr['district']}"
         else:
             speak_output = "Welcome to the local schools app. How can I help you today?"
+        speak_output = "You are using the new app"
         # district_name = "FREDERICTON"
         # school_name = "École des Bâtisseurs"
         # text = requests.get(SCHEDULE_URL).text
@@ -77,7 +78,7 @@ class CaptureDistrictIntentHandler(AbstractRequestHandler):
         # TODO: when loading URL data, cache it in the app and put a timeout on the requests call
         #       if the request times out, fall back to the cached copy
         # TODO: put an expriation on the cached data, and warn the user the data may be out of date
-        src_data = ScheduleParser(requests.get(SCHEDULE_URL).text)
+        src_data = FSDScraper(requests.get(FSDScraper.SCHEDULE_URL).text)
         district = None
         for cur_dist in src_data.districts:
             if cur_dist.name.lower() == in_district.lower():
@@ -118,7 +119,7 @@ class SchoolsOpenIntentHandler(AbstractRequestHandler):
         in_district = attr["district"]
         # TODO: prompt the user for district if it isn't set
 
-        src_data = ScheduleParser(requests.get(SCHEDULE_URL).text)
+        src_data = FSDScraper(requests.get(FSDScraper.SCHEDULE_URL).text)
         district = src_data.get_district(in_district)
 
         if not district:
