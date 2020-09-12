@@ -1,7 +1,5 @@
 now:
 create 1 or 2 basic intents
-finish fixing validation problems on package
-submit for first review
 figure out how version management works so I know how to roll updates
 see if I can connect app to our devices before publishing
 ask local school is my school closed today
