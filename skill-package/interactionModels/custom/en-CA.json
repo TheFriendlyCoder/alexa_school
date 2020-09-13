@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "hello world",
+            "invocationName": "local school",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
@@ -26,6 +26,16 @@
                         "hi",
                         "say hello world",
                         "say hello"
+                    ]
+                },
+                {
+                    "name": "SchoolOpenIntent",
+                    "slots": [],
+                    "samples": [
+                        "is my school closed today",
+                        "is school closed today",
+                        "is my school open today",
+                        "Are schools open today"
                     ]
                 },
                 {

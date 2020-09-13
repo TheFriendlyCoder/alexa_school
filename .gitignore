@@ -137,4 +137,5 @@ docs/api/
 # alexa ask folders
 lambda/node_modules
 .ask/
-#ask-resources.json
+ask-resources.json
+ask_config/

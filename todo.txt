@@ -1,21 +1,13 @@
-now:
-make config work with ask-cli
-create 1 or 2 basic intents
-figure out how version management works so I know how to roll updates
-see if I can connect app to our devices before publishing
-ask local school is my school closed today
-
 soon:
 add intent for late buses
-add intent for school status and include closures and late buses
-
+figure out how version management works so I know how to roll updates
 add support for french language
     - https://developer.amazon.com/en-US/docs/alexa/custom-skills/develop-skills-in-multiple-languages.html
-make git repo into a package and publish the parser library to pypi
-add unit tests to library
-add nightly trigger to validate live content from websites to make sure parser isn't broken
+add unit tests to skill
+find a way to speed up build times
 
 medium term:
+clean up docs and deployment definition so I can get cerified: https://developer.amazon.com/en-US/docs/alexa/devconsole/launch-your-skill.html
 add docs to library explaining how to set up skill
 add user docs to library
 export package data from alexa developer console to repo
@@ -26,3 +18,4 @@ long term:
 detect users' location based on their postal code and guess which district they are in
 add support for english schools as well
 expand to make the app support different school districts and locales (ie: extensible)
+make similar tool for google home

@@ -2,29 +2,50 @@
   "manifest": {
     "publishingInformation": {
       "locales": {
-        "en-US": {
-          "summary": "Sample Short Description",
+        "en-CA": {
+          "summary": "Reports on school closures and late buses for regional school districts",
           "examplePhrases": [
-            "Alexa open hello world",
+            "Alexa open local school",
             "hello",
             "help"
           ],
-          "name": "My School",
-          "description": "Sample Full Description"
+          "keywords": [
+            "district",
+            "francophone",
+            "school",
+            "district",
+            "closures",
+            "late",
+            "buses"
+          ],
+          "name": "Local School",
+          "description": "Reports on school closures and late buses for regional school districts",
+          "smallIconUri": "file://assets/en-CA_smallIconUri.png",
+          "largeIconUri": "file://assets/en-CA_largeIconUri.png"
         }
       },
       "isAvailableWorldwide": true,
-      "testingInstructions": "Sample Testing Instructions.",
-      "category": "KNOWLEDGE_AND_TRIVIA",
+      "testingInstructions": "nothing special required",
+      "category": "EVENT_FINDERS",
       "distributionCountries": []
     },
     "apis": {
       "custom": {
         "endpoint": {
-          "uri": "arn:aws:lambda:us-east-1:265901712594:function:ask-myschool-default-default-1599955339233"
+          "uri": "arn:aws:lambda:us-east-1:112482396000:function:ask-localschool-melissa-default-1600022005772"
         }
       }
     },
-    "manifestVersion": "1.0"
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "locales": {
+        "en-CA": {}
+      },
+      "containsAds": false,
+      "isExportCompliant": true,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
+    }
   }
 }
