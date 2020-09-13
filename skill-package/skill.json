@@ -2,68 +2,29 @@
   "manifest": {
     "publishingInformation": {
       "locales": {
-        "en-CA": {
-          "summary": "Reports on school closures and late buses for regional school districts",
+        "en-US": {
+          "summary": "Sample Short Description",
           "examplePhrases": [
-            "Alexa open local school",
+            "Alexa open hello world",
             "hello",
             "help"
           ],
-          "keywords": [
-            "district",
-            "francophone",
-            "school",
-            "district",
-            "closures",
-            "late",
-            "buses"
-          ],
-          "name": "local school",
-          "description": "Reports on school closures and late buses for regional school districts",
-          "smallIconUri": "file://assets/images/en-CA_smallIconUri.png",
-          "largeIconUri": "file://assets/images/en-CA_largeIconUri.png"
+          "name": "My School",
+          "description": "Sample Full Description"
         }
       },
       "isAvailableWorldwide": true,
-      "testingInstructions": "nothing special required",
-      "category": "EVENT_FINDERS",
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "KNOWLEDGE_AND_TRIVIA",
       "distributionCountries": []
     },
     "apis": {
       "custom": {
         "endpoint": {
-          "uri": "arn:aws:lambda:us-east-1:265901712594:function:ask-localschool-default-skillSt-AlexaSkillFunction-86HAWFHEI5KG"
-        },
-        "interfaces": [],
-        "regions": {
-          "EU": {
-            "endpoint": {
-              "uri": "arn:aws:lambda:eu-west-1:998300611082:function:c9a6a01d-e5cb-4345-9798-e6d956b43a29:Release_0"
-            }
-          },
-          "NA": {
-            "endpoint": {
-              "uri": "arn:aws:lambda:us-east-1:998300611082:function:c9a6a01d-e5cb-4345-9798-e6d956b43a29:Release_0"
-            }
-          },
-          "FE": {
-            "endpoint": {
-              "uri": "arn:aws:lambda:us-west-2:998300611082:function:c9a6a01d-e5cb-4345-9798-e6d956b43a29:Release_0"
-            }
-          }
+          "uri": "arn:aws:lambda:us-east-1:265901712594:function:ask-myschool-default-default-1599955339233"
         }
       }
     },
-    "manifestVersion": "1.0",
-    "privacyAndCompliance": {
-      "allowsPurchases": false,
-      "locales": {
-        "en-CA": {}
-      },
-      "containsAds": false,
-      "isExportCompliant": true,
-      "isChildDirected": false,
-      "usesPersonalInfo": false
-    }
+    "manifestVersion": "1.0"
   }
 }
